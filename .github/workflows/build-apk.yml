@@ -34,7 +34,7 @@ jobs:
       - name: Build debug APK
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug -PserverUrl="ws://10.0.2.2:8765"
+          ./gradlew assembleDebug -PserverUrl="wss://pingzy-server-production.up.railway.app"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
