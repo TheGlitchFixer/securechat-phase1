@@ -14,6 +14,11 @@ jobs:
       - name: Unzip source
         run: |
           unzip -o pingzy-source.zip -d src
+          # Flatten single top-level folder (e.g. android-app) if present
+          if [ -d src/android-app ]; then
+            cp -a src/android-app/. src/
+            rm -rf src/android-app
+          fi
           cp -a src/. .
           rm -rf src pingzy-source.zip
 
