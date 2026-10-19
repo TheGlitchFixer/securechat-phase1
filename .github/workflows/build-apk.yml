@@ -23,6 +23,14 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Enable AndroidX
+        run: |
+          if [ -f gradle.properties ]; then
+            grep -q "^android.useAndroidX=" gradle.properties || echo "android.useAndroidX=true" >> gradle.properties
+          else
+            echo "android.useAndroidX=true" > gradle.properties
+          fi
+
       - name: Build debug APK
         run: |
           chmod +x gradlew
