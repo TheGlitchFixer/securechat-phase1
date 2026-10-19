@@ -14,10 +14,8 @@ jobs:
       - name: Unzip source
         run: |
           unzip -o pingzy-source.zip -d src
-          shopt -s dotglob
-          mv src/* .
-          rmdir src
-          rm -f pingzy-source.zip
+          cp -a src/. .
+          rm -rf src pingzy-source.zip
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
